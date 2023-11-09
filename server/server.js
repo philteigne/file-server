@@ -4,6 +4,7 @@ const server = net.createServer();
 
 server.on("connection", (client) => {
   console.log("New client connected!");
+  client.write("You're connected! Please enter a file name you'd like.")
   client.setEncoding("utf-8");
 
   client.on("data", (data) => {
