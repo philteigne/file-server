@@ -24,7 +24,7 @@ const fileRequest = (conn) => {
 
   stdin.setEncoding('utf8');
   stdin.on("data", (file) => {
-    connection.write(file.trim());
+    connection.write(file.toString().trim());
   });
 };
 

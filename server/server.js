@@ -4,7 +4,7 @@ const server = net.createServer();
 
 server.on("connection", (client) => {
   console.log("New client connected!");
-  client.write("You're connected! Please enter a file name you'd like.")
+  client.write("You're connected! Please enter a file name you'd like.");
   client.setEncoding("utf-8");
 
   client.on("data", (data) => {
@@ -13,11 +13,11 @@ server.on("connection", (client) => {
     fs.readFile(`./file_storage/${data}.txt`, 'utf8', (err, file) => {
       if (err) {
         client.write('Invalid file name');
-      } else {
-        client.write('File found!\n' + file);
+        return err;
       }
+      client.write('File found!\n' + file);
     });
-
+    console.log("hi");
   });
 });
 
